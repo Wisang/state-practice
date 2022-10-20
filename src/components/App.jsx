@@ -1,10 +1,20 @@
 import React from "react";
+import {useState} from "react";
 
 function App() {
+
+  const [currentTime, getTime] = useState("Start");
+
+  function setTime() {
+    getTime(new Date().toLocaleTimeString());
+  }
+
+  setInterval(setTime, 1000);
+
   return (
     <div className="container">
-      <h1>TIME</h1>
-      <button>Get Time</button>
+      <h1>{currentTime}</h1>
+      <button onClick={setTime}>Get Time</button>
     </div>
   );
 }
